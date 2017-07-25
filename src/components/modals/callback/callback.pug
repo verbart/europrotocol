@@ -1,0 +1,28 @@
+.modal__header
+  .modal__close(ng-click='$ctrl.cancel()') &times;
+  h3.modal__caption Заказать обратный звонок
+
+.modal__body.padding
+  form.form(
+    name='callbackForm'
+    ng-init='$ctrl.callbackForm = {}'
+    novalidate
+    ng-submit='$ctrl.submitted = true; callbackForm.$valid && $ctrl.ok(callbackForm)'
+  )
+    input(
+      type='hidden'
+      name='title'
+      ng-init='$ctrl.callbackForm.title = "Заявка на обратный звонок из модального окна"'
+      ng-model='$ctrl.callbackForm.title'
+    )
+    .form__group.form__group_lg.margin_bottom_half
+      input.form__input(
+        ng-model='$ctrl.phone'
+        name='phone'
+        placeholder='Введите телефон'
+        required
+      )
+    ng-messages(for='callbackForm.phone.$error' ng-if='$ctrl.interacted(callbackForm.phone)')
+      p.form__message.form__message_error(ng-message='required') Укажите телефон для связи
+
+    button.button.button_underlined.button_block.button_lg Перезвоните мне!

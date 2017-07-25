@@ -1,0 +1,51 @@
+doctype html
+html(ng-app='avarcom' lang='ru')
+  head
+    base(href='/')
+    meta(charset='UTF-8')
+    meta(name='description', content='Центр аварийных коммиссаров')
+    meta(name='keywords', content='центр, ак, коммиссар, авария, дтп')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='msapplication-TileImage', content='/images/app-icon/ms-icon-144x144.png')
+    meta(name='theme-color', content='#ffffff')
+
+    meta(name='apple-itunes-app' content='app-id=1189530284')
+    meta(name='smartbanner:title', content='Центр АК')
+    meta(name='smartbanner:author', content='MOBI agency')
+    meta(name='smartbanner:price', content='БЕСПЛАТНО')
+    meta(name='smartbanner:price-suffix-google', content=' - в Play Маркет')
+    meta(name='smartbanner:icon-google', content='http://lh3.googleusercontent.com/GJ-ZEnQB65nCCKHyqSeofg8S2wwpTOc1X103azZ-Ze8Cri-cRUWIeFAFqN1q9TPlMvc=w80')
+    meta(name='smartbanner:button', content='ОТКРЫТЬ')
+    meta(name='smartbanner:button-url-google', content='https://play.google.com/store/apps/details?id=centr.ru.crashservice')
+    meta(name='smartbanner:enabled-platforms', content='android')
+
+    link(rel='manifest' href='./manifest.json')
+    link(rel='apple-touch-icon', sizes='57x57', href='/images/app-icon/apple-icon-57x57.png')
+    link(rel='apple-touch-icon', sizes='60x60', href='/images/app-icon/apple-icon-60x60.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='/images/app-icon/apple-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='76x76', href='/images/app-icon/apple-icon-76x76.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='/images/app-icon/apple-icon-114x114.png')
+    link(rel='apple-touch-icon', sizes='120x120', href='/images/app-icon/apple-icon-120x120.png')
+    link(rel='apple-touch-icon', sizes='144x144', href='/images/app-icon/apple-icon-144x144.png')
+    link(rel='apple-touch-icon', sizes='152x152', href='/images/app-icon/apple-icon-152x152.png')
+    link(rel='apple-touch-icon', sizes='180x180', href='/images/app-icon/apple-icon-180x180.png')
+    link(rel='icon', type='image/png', sizes='192x192', href='/images/app-icon/android-icon-192x192.png')
+    link(rel='icon', type='image/png', sizes='32x32', href='/images/app-icon/favicon-32x32.png')
+    link(rel='icon', type='image/png', sizes='96x96', href='/images/app-icon/favicon-96x96.png')
+    link(rel='icon', type='image/png', sizes='16x16', href='/images/app-icon/favicon-16x16.png')
+    link(rel='icon' type='image/x-icon' href='/favicon.ico')
+    link(rel='shortcut icon' type='image/x-icon' href='/favicon.ico')
+
+    link(rel='stylesheet' href='./css/style.css')
+
+    script(defer src='http://maps.google.com/maps/api/js?key=AIzaSyBgxqZ6vNracYQo0p1qa7qnZQ2feWaWtao')
+    script(defer src='./js/bundle.js')
+
+    title АварКом
+
+  body
+    ui-view
+
+    toaster-container
