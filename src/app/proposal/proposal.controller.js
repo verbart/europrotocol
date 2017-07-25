@@ -14,26 +14,7 @@ export default class {
         lng: 0,
         zoom: 18
       },
-      markers: {},
-      layers: {
-        baselayers: {
-          googleTerrain: {
-            name: 'Google Terrain',
-            layerType: 'TERRAIN',
-            type: 'google'
-          },
-          googleHybrid: {
-            name: 'Google Hybrid',
-            layerType: 'HYBRID',
-            type: 'google'
-          },
-          googleRoadmap: {
-            name: 'Google Streets',
-            layerType: 'ROADMAP',
-            type: 'google'
-          }
-        }
-      }
+      markers: {}
     };
     this.newAccidentMarker = {
       draggable: true,
