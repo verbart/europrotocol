@@ -7,21 +7,20 @@ export default {
   },
   controller: function ($http, $stateParams, toaster, CONSTANT) {
     this.sendForm = (form) => {
-      const data = form.$$controls.reduce((result, item) => {
+      this.newAccident = form.$$controls.reduce((result, item) => {
         result[item.$name] = item.$modelValue || '';
         return result;
       }, {});
 
-      angular.extend(data, this.resolve.accident);
-      data.created = new Date().getTime();
+      angular.extend(this.newAccident, this.resolve.accident);
+      this.newAccident.created = new Date().getTime();
 
-      console.log($stateParams.token.length, '665AHD777JH37BB735141E346EEW'.length);
       $http.post(
         `${CONSTANT.API_URL_V2}/partners`,
-        data,
+        this.newAccident,
         {
           headers: {
-            token: '665AHD777JH37BB735141E346EEW'
+            token: $stateParams.token || '665AHD777JH37BB735141E346EEW'
           }
         }
       )

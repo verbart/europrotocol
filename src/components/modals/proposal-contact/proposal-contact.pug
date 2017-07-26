@@ -3,7 +3,11 @@
   //h3.modal__caption
 
 .modal__body.padding
-  form.form(
+  .text_center
+    span(ng-show='$ctrl.resolve.accident.type === 0') Оставьте номер телефона для быстрой связи с Вами
+    span(ng-show='$ctrl.resolve.accident.type === 1') Оставьте номер телефона и получите 100 рублей за оформление ДТП
+
+  form.form.padding_top_half(
     name='proposalForm'
     ng-init='$ctrl.proposalForm = {}'
     novalidate
