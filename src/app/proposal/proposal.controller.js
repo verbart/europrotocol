@@ -14,15 +14,18 @@ export default class {
         lng: 0,
         zoom: 18
       },
-      markers: {}
-    };
-    this.newAccidentMarker = {
-      draggable: true,
-      icon: {
-        iconUrl: 'images/icons/flag.png',
-        iconSize: [32, 32],
-        iconAnchor: [0, 32],
-        popupAnchor: [0, -16]
+      markers: {
+        newAccident: {
+          lat: 0,
+          lng: 0,
+          draggable: true,
+          icon: {
+            iconUrl: 'images/icons/flag.png',
+            iconSize: [32, 32],
+            iconAnchor: [0, 32],
+            popupAnchor: [0, -16]
+          }
+        }
       }
     };
     this.radiusCircle = {};
@@ -31,32 +34,36 @@ export default class {
     leafletData.getMap('mainMap').then((map) => {
       this.lMap = map;
 
-      map.on('locationfound', this.onLocationFound.bind(this));
-      map.on('locationerror', this.onLocationError.bind(this));
-      $scope.$on('leafletDirectiveMap.mainMap.click', (event, args) => {
-        const latlng = args.leafletEvent.latlng;
+      map.on('locationfound', (e) => this.onLocationFound(e));
+      map.on('locationerror', (e) => this.onLocationError(e));
+      map.on('move', () => this.moveAccidentMarker(map.getCenter()));
+      map.on('moveend', () => this.getAddress(map.getCenter()));
 
-        this.moveAccidentMarker(latlng);
-        this.getAddress(latlng);
+      $scope.$on('leafletDirectiveMap.mainMap.click', (event, args) => {
+        this.updateAccindentPosition(args.leafletEvent.latlng);
       });
-      $scope.$on('leafletDirectiveMarker.mainMap.dragend', this.onMarkerDragend.bind(this));
+
+      $scope.$on('leafletDirectiveMarker.mainMap.dragend', (event, args) => {
+        this.updateAccindentPosition(args.leafletEvent.target._latlng);
+      });
 
       this.detectLocation();
     });
   }
 
   moveAccidentMarker(latlng) {
-    this.newAccidentMarker.lat = latlng.lat;
-    this.newAccidentMarker.lng = latlng.lng;
-
-    this.map.markers['new'] = this.newAccidentMarker;
+    this.map.markers['newAccident'].lat = latlng.lat;
+    this.map.markers['newAccident'].lng = latlng.lng;
   }
 
-  onMarkerDragend(event, args) {
-    this.getAddress({
-      lat: args.model.lat,
-      lng: args.model.lng
-    });
+  moveMap(latlng) {
+    this.map.center.lat = latlng.lat;
+    this.map.center.lng = latlng.lng;
+  }
+
+  updateAccindentPosition(latlng) {
+    this.moveMap(latlng);
+    this.getAddress(latlng);
   }
 
   detectLocation() {
@@ -69,7 +76,7 @@ export default class {
   }
 
   onSelectAddressTypeahead(item) {
-    this.moveAccidentMarker(item.geometry.location);
+    this.moveMap(item.geometry.location);
   }
 
   onLocationFound(e) {
@@ -99,7 +106,7 @@ export default class {
 
     this.locationIsDetected = true;
 
-    if (!this.warningMessageOfGPSisShowed) {
+    if (this.warningMessageOfGPSisShowed) {
       this.$uibModal.open({
         component: 'alertModal',
         size: 'xs',
@@ -156,8 +163,6 @@ export default class {
 
   getAddress(latlng) {
     this.Geocoding.getAddress(latlng, response => {
-      console.log(response);
-
       angular.extend(this.newAccident, {
         address: response,
         lat: latlng.lat,
@@ -179,7 +184,6 @@ export default class {
         language: 'ru'
       }
     }).then(response => {
-      console.log(response);
       return response.data.results.slice(0, 5);
     }, error => {
       console.log(error);
