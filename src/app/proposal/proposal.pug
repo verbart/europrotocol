@@ -34,6 +34,6 @@ include /src/components/icon/icon
   .proposal__footer
     .row
       .col-6.text_right.margin_vertical_half
-        button.button.button_lg(ng-click='proposalCtrl.openContactModal(0)') Участник
+        button.button.button_lg(ng-click='proposalCtrl.openContactModal("participant")') Участник
       .col-6.margin_vertical_half
-        button.button.button_lg.button_lightgrey(ng-click='proposalCtrl.openContactModal(1)') Очевидец
+        button.button.button_lg.button_lightgrey(ng-click='proposalCtrl.openContactModal("eyewitness")') Очевидец

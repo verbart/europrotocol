@@ -4,8 +4,8 @@
 
 .modal__body.padding
   .text_center
-    span(ng-show='$ctrl.resolve.accident.type === 0') Оставьте номер телефона для быстрой связи с Вами
-    span(ng-show='$ctrl.resolve.accident.type === 1') Оставьте номер телефона и получите 100 рублей за оформление ДТП
+    span(ng-show='$ctrl.resolve.accident.type === "participant"') Оставьте номер телефона для быстрой связи с Вами
+    span(ng-show='$ctrl.resolve.accident.type === "eyewitness"') Оставьте номер телефона и получите 100 рублей за оформление ДТП
 
   form.form.padding_top_half(
     name='proposalForm'
