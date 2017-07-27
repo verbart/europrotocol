@@ -13,7 +13,6 @@ export default {
       }, {});
 
       angular.extend(this.newAccident, this.resolve.accident);
-      this.newAccident.created = new Date().getTime();
 
       $http.post(
         `${CONSTANT.API_URL_V2}/partners`,
