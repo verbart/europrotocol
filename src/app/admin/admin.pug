@@ -1,0 +1,35 @@
+include /src/components/icon/icon
+
+.admin
+  .container
+    .row.padding_vertical
+      .col-md-6.offset-md-3
+        form.form(
+          name='creationForm'
+          novalidate
+          ng-submit='adminCtrl.submitted = true; creationForm.$valid && adminCtrl.addPartner()'
+        )
+          .form__group.margin_bottom_half
+            input.form__input(
+              id='name'
+              ng-model='adminCtrl.newPartner.name'
+              name='name'
+              placeholder='Имя партнёра, название компании'
+              required
+            )
+            button.button Добавить
+
+      ng-messages(for='creationForm.name.$error' ng-if='adminCtrl.interacted(creationForm.name)')
+        p.form__message.form__message_error(ng-message='required') Укажите имя компании - парнёра
+
+    .table.text_center
+      table
+        thead
+          th Имя
+          th Токен
+        tbody
+          tr(ng-repeat='partner in adminCtrl.partners track by partner.id')
+            td {{partner.name}}
+            td
+              a.link(href='{{adminCtrl.locationOrigin}}?token={{partner.token}}' target='_blank')
+                | {{adminCtrl.locationOrigin}}?token={{partner.token}}

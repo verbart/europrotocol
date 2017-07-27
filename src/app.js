@@ -6,12 +6,16 @@ import 'angularjs-toaster';
 import Geocoding from './components/geocoding.service';
 
 import './app/proposal';
+import './app/admin';
+import './app/auth';
 
 
 angular.module('avarcom', [
   'toaster',
 
-  'avarcom.proposal'
+  'avarcom.proposal',
+  'avarcom.admin',
+  'avarcom.auth'
 ])
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',

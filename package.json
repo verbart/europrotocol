@@ -42,6 +42,7 @@
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
     "angularjs-toaster": "^2.1.0",
+    "ngstorage": "^0.3.11",
     "smartbanner.js": "^1.5.0",
     "ui-leaflet": "^2.0.0"
   }

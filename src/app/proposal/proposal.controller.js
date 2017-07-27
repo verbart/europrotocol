@@ -106,7 +106,7 @@ export default class {
 
     this.locationIsDetected = true;
 
-    if (this.warningMessageOfGPSisShowed) {
+    if (!this.warningMessageOfGPSisShowed) {
       this.$uibModal.open({
         component: 'alertModal',
         size: 'xs',
