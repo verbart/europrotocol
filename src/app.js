@@ -3,19 +3,17 @@ import angular from 'angular';
 import 'smartbanner.js/dist/smartbanner.min';
 import 'angularjs-toaster';
 
-import Geocoding from './components/geocoding.service';
-
 import './app/proposal';
 import './app/admin';
 import './app/auth';
 
 
-angular.module('avarcom', [
+angular.module('europrotocol', [
   'toaster',
 
-  'avarcom.proposal',
-  'avarcom.admin',
-  'avarcom.auth'
+  'europrotocol.proposal',
+  'europrotocol.admin',
+  'europrotocol.auth'
 ])
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',
@@ -38,6 +36,4 @@ angular.module('avarcom', [
     });
 
     $urlRouterProvider.otherwise('/404');
-  })
-
-  .service('Geocoding', Geocoding);
+  });

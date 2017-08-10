@@ -1,0 +1,40 @@
+include /src/components/icon/icon
+
+.partners
+  ui-view
+    .container
+      .row.padding_vertical
+        .col-lg-6.offset-lg-3
+          form.form(
+            name='creationForm'
+            novalidate
+            ng-submit='partnersCtrl.submitted = true; creationForm.$valid && partnersCtrl.addPartner()'
+          )
+            .form__group.margin_bottom_half
+              input.form__input(
+                id='name'
+                ng-model='partnersCtrl.newPartner.name'
+                name='name'
+                placeholder='Имя партнёра, название компании'
+                required
+              )
+              button.button Добавить
+
+        ng-messages(for='creationForm.name.$error' ng-if='partnersCtrl.interacted(creationForm.name)')
+          p.form__message.form__message_error(ng-message='required') Укажите имя компании - парнёра
+
+      .row
+        .col-md-6.col-xl-4.padding_vertical_half(ng-repeat='partner in partnersCtrl.partners track by partner.id')
+          .partner
+            .partner__header
+              h3 {{partner.name}}
+              a.partner__link.link(href='{{partnersCtrl.locationOrigin}}?token={{partner.token}}' target='_blank')
+                | {{partnersCtrl.locationOrigin}}?token={{partner.token}}
+            .partner__body
+              p
+                | #[b Переходы:] 0;
+                | #[b Заявки:] 0;
+                | #[b Принято:] 0;
+                | #[b Успешно:] 0;
+            .partner__footer.text_right
+              a.button.button_grey(ui-sref='admin.partners.readOne({id: partner.id})') Подробнее

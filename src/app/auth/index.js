@@ -11,7 +11,7 @@ import AuthService from './auth.service';
 import LoginCtrl from './login/login.controller';
 
 
-export default angular.module('avarcom.auth', [
+export default angular.module('europrotocol.auth', [
   uiRouter,
   'ngStorage'
 ])

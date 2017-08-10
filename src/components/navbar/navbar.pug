@@ -1,0 +1,11 @@
+include /node_modules/bemto.pug/bemto
+
++b.NAV.navbar
+  +e.item(ng-if='$ctrl.AuthService.isUserRole("user")' ui-sref-active='navbar__item_active')
+    +e.A.link(id='intro-step-7' ui-sref='dashboard.statistics') Статистика
+
+  +e.item(ng-if='$ctrl.AuthService.isUserRole("moderator")' ui-sref-active='navbar__item_active')
+    +e.A.link(id='intro-step-7' ui-sref='admin.partners') Партнёры
+
+  +e.item_right(ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='logout') Выйти

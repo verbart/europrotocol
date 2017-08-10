@@ -14,13 +14,9 @@ export default class {
     this.AuthService.login(this.user).then(
       response => {
         console.log(response);
-        const userData = response.data;
-
-        this.$rootScope.__USER_ROLE = userData.role || 'moderator';
-
         this.errorCode = null;
 
-        this.AuthData.set(userData);
+        this.AuthData.set(response.data);
         this.AuthToken.set(response.headers('token'));
 
         this.$state.go('admin');

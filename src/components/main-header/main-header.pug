@@ -1,0 +1,15 @@
+include ../icon/icon
+
+header.mainHeader
+  .container.mainHeader__container
+    a.logo.mainHeader__logo(ui-sref='home')
+      .logo__image
+        //+icon({icon: 'logo'})
+        img(src='/images/logo.png')
+      h1.logo__text Европротокол+
+
+    .mainHeader__navbar(ng-class='{mainHeader__navbar_active: $ctrl.navbarIsActive}')
+      main-navbar
+
+    button.mainHeader__burgerButton(ng-click='$ctrl.navbarIsActive = !$ctrl.navbarIsActive')
+      +icon({icon: 'menu'})

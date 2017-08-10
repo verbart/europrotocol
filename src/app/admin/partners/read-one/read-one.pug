@@ -1,0 +1,41 @@
+.container.padding_top
+  .partner
+    .partner__header
+      h3 {{readOne.partner.name}}
+      a.link(href='mailto:{{readOne.partner.email}}') {{readOne.partner.email}}
+      p
+        a.partner__link.link(href='{{readOne.locationOrigin}}?token={{partner.token}}' target='_blank')
+          | {{readOne.locationOrigin}}?token={{readOne.partner.token}}
+    .partner__body
+      p
+        | #[b Переходы:] 0;
+        | #[b Заявки:] 0;
+        | #[b Принято:] 0;
+        | #[b Успешно:] 0;
+
+  .padding_top
+    .table.text_center
+      table
+        thead
+          th Адрес
+          th Номер
+          th Успех
+          th Оплата
+        tbody
+          tr
+            td address
+            td 000000000
+            td -
+            td
+              button.button Оплатить
+          tr
+            td address1
+            td 000000000
+            td +
+            td Оплачено
+          tr
+            td address2
+            td 000000000
+            td -
+            td
+              button.button Оплатить
