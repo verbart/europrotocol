@@ -1,7 +1,8 @@
 export default class {
-  constructor($http, toaster, CONSTANT) {
+  constructor($http, $uibModal, toaster, CONSTANT) {
     this.$http = $http;
     this.toaster = toaster;
+    this.$uibModal = $uibModal;
     this.CONSTANT = CONSTANT;
     this.partners = [];
     this.newPartner = {};
@@ -22,14 +23,17 @@ export default class {
   }
 
   addPartner() {
-    this.$http.post(`${this.CONSTANT.API_URL_V2}/partners/new-partner`, this.newPartner)
-      .then(response => {
-        console.log(response);
+    const modalInstance = this.$uibModal.open({
+      component: 'newPartnerModal',
+      size: 'xs'
+    });
 
-        this.newPartner = {};
-        this.partners.push(response.data);
-      }, error => {
-        console.log(error);
-      });
+    modalInstance.result.then(partner => {
+      console.log(partner);
+      this.toaster.success('Добавлен новый партнёр!');
+      this.partners.push(partner);
+    }, () => {
+      console.info('modal-component dismissed at: ' + new Date());
+    });
   }
 }

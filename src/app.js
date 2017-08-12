@@ -1,7 +1,6 @@
 import angular from 'angular';
 
 import 'smartbanner.js/dist/smartbanner.min';
-import 'angularjs-toaster';
 
 import './app/proposal';
 import './app/admin';
@@ -9,8 +8,6 @@ import './app/auth';
 
 
 angular.module('europrotocol', [
-  'toaster',
-
   'europrotocol.proposal',
   'europrotocol.admin',
   'europrotocol.auth'

@@ -1,0 +1,46 @@
+include /src/components/icon/icon
+
+.modal__header
+  .modal__close(ng-click='$ctrl.cancel()') &times;
+  h3.modal__caption Данные нового партнёра
+
+.modal__body.container-fluid.padding_top_half
+  form.form.row(
+    id='creationForm'
+    name='creationForm'
+    novalidate
+    ng-submit='$ctrl.submitted = true; creationForm.$valid && $ctrl.addPartner()'
+  )
+    .col-12
+      .form__group.margin_bottom_half
+        label.form__addon(for='name')
+          +icon({icon: 'user'})
+        input.form__input(
+          id='name'
+          name='name'
+          ng-model='$ctrl.partner.name'
+          required
+          placeholder='Имя'
+        )
+      ng-messages(for='creationForm.name.$error' ng-if='$ctrl.interacted(creationForm.name)')
+        p.form__message.form__message_error(ng-message='required') Укажите имя пользователя
+
+    .col-12
+      .form__group.margin_bottom_half
+        label.form__addon(for='email')
+          +icon({icon: 'mail'})
+        input.form__input(
+          type='email'
+          id='email'
+          name='email'
+          ng-model='$ctrl.partner.email'
+          required
+          placeholder='E-mail'
+        )
+      ng-messages(for='creationForm.email.$error' ng-if='$ctrl.interacted(creationForm.email)')
+        p.form__message.form__message_error(ng-message='required') Укажите email адрес
+        p.form__message.form__message_error(ng-message='email') Email не корректен
+
+.modal__footer.clearfix
+  .float-right
+    button.button.button_sm(form='creationForm') Добавить

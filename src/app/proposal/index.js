@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
+import 'angularjs-toaster';
 import 'angular-ui-bootstrap';
 import 'leaflet';
 import 'angular-simple-logger';
@@ -15,6 +16,7 @@ import Geocoding from '../../components/geocoding.service';
 
 angular.module('europrotocol.proposal', [
   uiRouter,
+  'toaster',
   'ui.bootstrap',
   'nemLogging',
   'ui-leaflet'

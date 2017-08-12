@@ -4,32 +4,39 @@ include /src/components/icon/icon
   ui-view
     .container
       .row.padding_vertical
-        .col-lg-6.offset-lg-3
+        .col-sm-7.col-lg-4
           form.form(
             name='creationForm'
             novalidate
-            ng-submit='partnersCtrl.submitted = true; creationForm.$valid && partnersCtrl.addPartner()'
           )
             .form__group.margin_bottom_half
+              label(for='search').form__addon
+                +icon({icon: 'search'})
               input.form__input(
-                id='name'
-                ng-model='partnersCtrl.newPartner.name'
-                name='name'
-                placeholder='Имя партнёра, название компании'
+                id='search'
+                ng-model='search'
+                name='search'
+                placeholder='Поиск партнёра...'
                 required
               )
-              button.button Добавить
+
+        .col-sm-5.col-lg-8.text_right
+          button.button(ng-click='partnersCtrl.addPartner()') Добавить нового
 
         ng-messages(for='creationForm.name.$error' ng-if='partnersCtrl.interacted(creationForm.name)')
           p.form__message.form__message_error(ng-message='required') Укажите имя компании - парнёра
 
       .row
-        .col-md-6.col-xl-4.padding_vertical_half(ng-repeat='partner in partnersCtrl.partners track by partner.id')
+        .col-sm-6.col-lg-4.padding_vertical_half(
+          ng-repeat='partner in partnersCtrl.partners | filter : search track by partner.id'
+        )
           .partner
             .partner__header
               h3 {{partner.name}}
-              a.partner__link.link(href='{{partnersCtrl.locationOrigin}}?token={{partner.token}}' target='_blank')
-                | {{partnersCtrl.locationOrigin}}?token={{partner.token}}
+              a.link(href='mailto:{{partner.email}}') {{partner.email}}
+              p
+                a.partner__link.link(href='{{partnersCtrl.locationOrigin}}?token={{partner.token}}' target='_blank')
+                 | {{partnersCtrl.locationOrigin}}?token={{partner.token}}
             .partner__body
               p
                 | #[b Переходы:] 0;
