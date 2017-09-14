@@ -2,12 +2,14 @@ import angular from 'angular';
 
 import 'smartbanner.js/dist/smartbanner.min';
 
+import './app/europrotocol';
 import './app/proposal';
 import './app/admin';
 import './app/auth';
 
 
 angular.module('europrotocol', [
+  'europrotocol.europrotocol',
   'europrotocol.proposal',
   'europrotocol.admin',
   'europrotocol.auth'
