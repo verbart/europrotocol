@@ -1,0 +1,86 @@
+include /src/components/checkbox/checkbox
+
+
+.step
+  .container
+    .stepHeader
+      .stepHeader__caption Сведения о ДТП (1/7)
+
+    .europrotocolField.europrotocolField_column
+      .europrotocolField__label.europrotocolField__label_block Адрес и время аварии:
+      .europrotocolField__control
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(id='address' ng-model='miCtrl.europrotocol.address' placeholder='Адрес аварии')
+        .form__group.form__group_block
+          input.form__input(id='date' ng-model='miCtrl.europrotocol.date' placeholder='Время аварии')
+
+    .europrotocolField
+      .europrotocolField__label ТС повреждено:
+      .europrotocolField__control
+        div(
+          fs-counter
+          value='epCtrl.europrotocol.vehiclesDamaged'
+          data-min='0'
+          data-max='100'
+          data-step='1'
+          data-addclass='counter'
+        )
+
+    .europrotocolField
+      .europrotocolField__label Раненных
+      .europrotocolField__control
+        div(
+          fs-counter
+          value='epCtrl.europrotocol.wounded'
+          data-min='0'
+          data-max='100'
+          data-step='1'
+          data-addclass='counter'
+        )
+
+    label.europrotocolField
+      .europrotocolField__label Освидетельствование:
+      .europrotocolField__control
+        +checkbox({
+          id: 'examination',
+          'ng-model': 'epCtrl.europrotocol.examination'
+        })
+
+    label.europrotocolField
+      .europrotocolField__label Материальный ущерб ТС:
+      .europrotocolField__control
+        +checkbox({
+          id: 'propertyDamageOfVehicle',
+          'ng-model': 'epCtrl.europrotocol.propertyDamageOfVehicle'
+        })
+
+    label.europrotocolField
+      .europrotocolField__label Другому имуществу:
+      .europrotocolField__control
+        +checkbox({
+          id: 'propertyDamage',
+          'ng-model': 'epCtrl.europrotocol.propertyDamage'
+        })
+
+    .europrotocolField
+      .europrotocolField__label Свидетели:
+      .europrotocolField__control
+        div(
+          fs-counter
+          value='epCtrl.europrotocol.witnesses.length'
+          data-min='0'
+          data-max='100'
+          data-step='1'
+          data-addclass='counter'
+        )
+
+    label.europrotocolField
+      .europrotocolField__label Оформление ДТП:
+      .europrotocolField__control
+        +checkbox({
+          id: 'executionOfTrafficAccident',
+          'ng-model': 'epCtrl.europrotocol.executionOfTrafficAccident'
+        })
+
+    .padding_vertical_half
+      button.button.button_lg.button_block Далее

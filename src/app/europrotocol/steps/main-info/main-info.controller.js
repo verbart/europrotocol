@@ -12,12 +12,10 @@ export default class {
     this.warningMessageOfGPSisShowed = false;
     this.value = 0;
 
-    console.log('It Works!');
-
-    this.europrotocol = {
+    const europrotocol = {
       address: '',
       date: 347392938,
-      vehiclesDamaged: 1, // ТС повреждено
+      vehiclesDamaged: 0, // ТС повреждено
       wounded: 0, // Раненных
       examination: false, // Освидетельствование
       propertyDamageOfVehicle: false, // Материальный ущерб ТС
@@ -35,50 +33,15 @@ export default class {
       badgeNumber: 88 // Номер нагрудного значка
     };
 
-    const witnessesCount = this.europrotocol.witnesses.length;
-  }
+    navigator.geolocation.getCurrentPosition(function(position) {
 
-  onFileSelect(files) {
-    console.log(files);
-
-    this.$http({
-      method: 'POST',
-      url: 'https://cors-anywhere.herokuapp.com/https://cloud.ocrsdk.com/processMRZ',
-      headers : {
-        'Content-Type': files[0].type
-      },
-      data: {'files[]': files[0]}
-    }, response => {
-      console.log(response);
-      // this.progress = Math.round(100);
-      // this.$scope.$apply();
-    }, error => {
-      console.log(error);
     });
   }
 
   onLocationFound(e) {
     this.locationIsDetected = true;
-    const radius = Math.round(e.accuracy / 2);
-    this.accidentBounds = new google.maps.Circle({
-      center: e.latlng,
-      radius: radius+2000
-    }).getBounds();
 
-    this.map.center.lat = e.latlng.lat;
-    this.map.center.lng = e.latlng.lng;
-
-    this.map.markers['user'] = {
-      lat: e.latlng.lat,
-      lng: e.latlng.lng,
-      message: `Ваше местоположение предположительно в радиусе ${radius}м`,
-      focus: true
-    };
-
-    this.lMap.removeLayer(this.radiusCircle);
-    this.radiusCircle = L.circle(e.latlng, radius).addTo(this.lMap);
   }
-
   onLocationError(e) {
     console.log(e);
 
@@ -99,14 +62,13 @@ export default class {
       }).then(() => {
         this.warningMessageOfGPSisShowed = true;
       }).finally(() => {
-        this.geoLoacatebyGoogle();
+        this.geolocationByGoogle();
       });
     } else {
-      this.geoLoacatebyGoogle();
+      this.geolocationByGoogle();
     }
   }
-
-  geoLoacatebyGoogle() {
+  geolocationByGoogle() {
     this.$http.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${this.CONSTANT.GOOGLE_API_KEY}`)
       .then(response => {
         console.log(response);
