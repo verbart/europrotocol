@@ -10,9 +10,9 @@ form.step
       .europrotocolField__label.europrotocolField__label_block Адрес и время аварии:
       .europrotocolField__control
         .form__group.form__group_block.margin_bottom_small
-          input.form__input(id='address' ng-model='miCtrl.europrotocol.address' placeholder='Адрес аварии')
+          input.form__input(id='address' ng-model='epCtrl.europrotocol.address' placeholder='Адрес аварии')
         .form__group.form__group_block
-          input.form__input(id='date' ng-model='miCtrl.europrotocol.date' placeholder='Время аварии')
+          input.form__input(id='date' ng-model='epCtrl.europrotocol.date' placeholder='Время аварии')
 
     .europrotocolField
       .europrotocolField__label ТС повреждено:
@@ -62,17 +62,54 @@ form.step
           'ng-model': 'epCtrl.europrotocol.propertyDamage'
         })
 
-    .europrotocolField
-      .europrotocolField__label Свидетели:
-      .europrotocolField__control
-        div(
-          fs-counter
-          value='epCtrl.europrotocol.witnesses.length'
-          data-min='0'
-          data-max='100'
-          data-step='1'
-          data-addclass='counter'
-        )
+    .europrotocolField.europrotocolField_column
+      .europrotocolField__main
+        .europrotocolField__label Свидетели:
+        .europrotocolField__control
+          div(
+            fs-counter
+            value='epCtrl.witnessesCount'
+            data-min='0'
+            data-max='100'
+            data-step='1'
+            data-addclass='counter'
+          )
+      .europrotocolField__secondary(
+        ng-show='epCtrl.europrotocol.witnesses.length'
+        ng-repeat='witness in epCtrl.europrotocol.witnesses track by $index'
+      )
+        h4 Свидетель {{$index+1}}
+
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.witnesses[$index].fullName'
+            name='full_name'
+            placeholder='ФИО'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.witnesses[$index].address'
+            name='address'
+            placeholder='Адрес'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.witnesses[$index].passport'
+            name='passport'
+            placeholder='Номер и серия паспорта'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.witnesses[$index].phone'
+            name='phone'
+            placeholder='Контактный телефон'
+          )
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='epCtrl.europrotocol.witnesses[$index].email'
+            name='email'
+            placeholder='E-mail'
+          )
 
     label.europrotocolField
       .europrotocolField__label Оформление ДТП:

@@ -35,7 +35,8 @@ export default class {
       badgeNumber: 88 // Номер нагрудного значка
     };
 
-    const witnessesCount = this.europrotocol.witnesses.length;
+    this.witnessesCount = this.europrotocol.witnesses.length;
+    console.log(this.witnessesCount);
 
     window.onbeforeunload = function (evt) {
       const message = 'Документ не сохранён. После закрытия страницы, все данные будут утеряны.';
@@ -49,6 +50,16 @@ export default class {
 
       return message;
     }
+
+    this.$scope.$watch(() => this.witnessesCount, (newValue, oldValue) => {
+      console.log(this.europrotocol.witnesses);
+
+      if (newValue > oldValue) {
+        this.europrotocol.witnesses.push({});
+      } else if (newValue < oldValue) {
+        this.europrotocol.witnesses.pop();
+      }
+    });
   }
 
   onFileSelect(files) {
