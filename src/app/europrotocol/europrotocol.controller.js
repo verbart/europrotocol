@@ -36,6 +36,19 @@ export default class {
     };
 
     const witnessesCount = this.europrotocol.witnesses.length;
+
+    window.onbeforeunload = function (evt) {
+      const message = 'Документ не сохранён. После закрытия страницы, все данные будут утеряны.';
+
+      if (typeof evt == "undefined") {
+        evt = window.event;
+      }
+      if (evt) {
+        evt.returnValue = message;
+      }
+
+      return message;
+    }
   }
 
   onFileSelect(files) {
