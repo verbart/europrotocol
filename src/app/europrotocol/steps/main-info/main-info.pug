@@ -7,12 +7,21 @@ form.step
       .stepHeader__caption Сведения о ДТП (1/7)
 
     .europrotocolField.europrotocolField_column
-      .europrotocolField__label.europrotocolField__label_block Адрес и время аварии:
-      .europrotocolField__control
+      .europrotocolField__main
+        .europrotocolField__label Адрес и время аварии:
+      .europrotocolField__secondary
         .form__group.form__group_block.margin_bottom_small
-          input.form__input(id='address' ng-model='epCtrl.europrotocol.address' placeholder='Адрес аварии')
+          input.form__input(
+            ng-model='epCtrl.europrotocol.address'
+            name='address'
+            placeholder='Адрес аварии'
+          )
         .form__group.form__group_block
-          input.form__input(id='date' ng-model='epCtrl.europrotocol.date' placeholder='Время аварии')
+          input.form__input(
+            ng-model='epCtrl.europrotocol.date'
+            name='date'
+            placeholder='Время аварии'
+          )
 
     .europrotocolField
       .europrotocolField__label ТС повреждено:
@@ -111,13 +120,20 @@ form.step
             placeholder='E-mail'
           )
 
-    label.europrotocolField
-      .europrotocolField__label Оформление ДТП:
-      .europrotocolField__control
-        +checkbox({
-          id: 'executionOfTrafficAccident',
-          'ng-model': 'epCtrl.europrotocol.executionOfTrafficAccident'
-        })
+    label.europrotocolField.europrotocolField_column
+      .europrotocolField__main
+        .europrotocolField__label Оформление ДТП:
+        .europrotocolField__control
+          +checkbox({
+            id: 'executionOfTrafficAccident',
+            'ng-model': 'epCtrl.europrotocol.executionOfTrafficAccident'
+          })
+      .europrotocolField__secondary(ng-show='epCtrl.europrotocol.executionOfTrafficAccident')
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='epCtrl.europrotocol.badgeNumber'
+            placeholder='Номер нагрудного значка'
+          )
 
     .padding_vertical_half
       button.button.button_lg.button_block Далее
