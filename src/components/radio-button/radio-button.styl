@@ -1,0 +1,47 @@
+.radioButton
+  display inline-flex
+  align-items center
+  &__input
+    display none
+    ~ .radioButton__icon
+      position relative
+      display block
+      width 22px
+      min-width @width
+      height 22px
+      margin-right 2px
+      background #f59c00
+      cursor pointer
+      &, &:after, &:before
+        border-radius 50%
+        transition .2s
+      &:after, &:before
+        content ''
+        position absolute
+      &:before
+        content ''
+        position absolute
+        left 1px
+        top 1px
+        right 1px
+        bottom 1px
+        display block
+        background #fff
+      &:after
+        left 50%
+        top 50%
+        right 50%
+        bottom 50%
+    &:checked
+      ~ .radioButton__icon
+        &:after
+          left 3px
+          top 3px
+          right 3px
+          bottom 3px
+          background #f59c00
+  &__icon label
+    cursor pointer
+  &__label
+    padding-left 6px
+    line-height 1.2

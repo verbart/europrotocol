@@ -1,0 +1,13 @@
+include /node_modules/bemto.pug/bemto
+
+mixin radio-button(data)
+  - data = data || {};
+  - data.id = data.id || Math.random();
+
+  +b.radioButton
+    +e.INPUT.input(type='radio')&attributes(data)
+    +e.LABEL.icon(for=data.id)
+
+    if block
+      +e.LABEL.label(for=data.id)
+        block

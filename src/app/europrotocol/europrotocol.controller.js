@@ -16,23 +16,91 @@ export default class {
 
     this.europrotocol = {
       address: '',
-      date: 347392938,
-      vehiclesDamaged: 1, // ТС повреждено
+      date: '',
+      vehiclesDamaged: 0, // ТС повреждено
       wounded: 0, // Раненных
       examination: false, // Освидетельствование
       propertyDamageOfVehicle: false, // Материальный ущерб ТС
       propertyDamage: false, // Другому имуществу
       witnesses: [ // Свидетели
-        {
-          fullName: '',
-          address: '',
-          passport: '', // Номер и серия паспорта
-          phone: '',
-          email: ''
-        }
+        // {
+        //   fullName: '',
+        //   address: '',
+        //   passport: '', // Номер и серия паспорта
+        //   phone: '',
+        //   email: ''
+        // }
       ],
-      executionOfTrafficAccident: true, // Оформление ДТП
-      badgeNumber: 88 // Номер нагрудного значка
+      executionOfTrafficAccident: false, // Оформление ДТП
+      badgeNumber: '', // Номер нагрудного значка
+      A: {
+        driversLicense: '',
+        certificateOfVehicleRegistration: '',
+        vehicle: {
+          carBrand: '',
+          VIN: '', // 17 numbers
+          carNumber: '',
+          STSorPTS: ''
+        },
+        ownwer: {
+          fullName: '',
+          address: ''
+        },
+        driver: {
+          fullName: '',
+          birthday: '',
+          address: '',
+          phone: '',
+          email: '',
+          driversLicense: ''
+        },
+        category: '',
+        dateOfIssueOfDrivingLicense: '',
+        waybill: '',
+        insurer: { // Страховщик
+          vehicleIsInsured: false,
+          investigativeCommitteeOfVictim: '',
+          insurancePolicy: '',
+          validUntil: ''
+        },
+        schemeOfAccident: '',
+        damageDescription: '',
+        additionalRemarks: ''
+      },
+      B: {
+        driversLicense: '',
+        certificateOfVehicleRegistration: '',
+        vehicle: {
+          carBrand: '',
+          VIN: '', // 17 numbers
+          carNumber: '',
+          STSorPTS: ''
+        },
+        ownwer: {
+          fullName: '',
+          address: ''
+        },
+        driver: {
+          fullName: '',
+          birthday: '',
+          address: '',
+          phone: '',
+          email: '',
+          driversLicense: ''
+        },
+        category: '',
+        dateOfIssueOfDrivingLicense: '',
+        waybill: '',
+        insurer: { // Страховщик
+          vehicleIsInsured: false,
+          investigativeCommitteeOfVictim: '',
+          insurancePolicy: '',
+          validUntil: ''
+        },
+        schemeOfAccident: '',
+        damageDescription: '',
+        additionalRemarks: ''
+      }
     };
 
     this.witnessesCount = this.europrotocol.witnesses.length;

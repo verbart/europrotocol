@@ -1,0 +1,202 @@
+include /src/components/checkbox/checkbox
+include /src/components/radio-button/radio-button
+
+
+form.step
+  .container
+    .stepHeader
+      .stepHeader__caption ТС "A" (2/7)
+
+    .europrotocolField.europrotocolField_column
+      .europrotocolField__main
+        .europrotocolField__label Данные о ТС "A":
+      .europrotocolField__secondary
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.vehicle.carBrand'
+            name='carBrand'
+            placeholder='Марка машины'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.vehicle.VIN'
+            name='VIN'
+            placeholder='VIN ТС'
+          )
+        .form__group.form__group_block.margin_bottom_small
+
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.vehicle.carNumber'
+            name='carNumber'
+            placeholder='Номер машины'
+          )
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.vehicle.STSorPTS'
+            name='STSorPTS'
+            placeholder='СТС или ПТС'
+          )
+
+    .europrotocolField.europrotocolField_column
+      .europrotocolField__main
+        .europrotocolField__label Собственник ТС "A":
+      .europrotocolField__secondary
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.owner.fullName'
+            name='fullName'
+            placeholder='ФИО'
+          )
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.owner.address'
+            name='address'
+            placeholder='Адрес'
+          )
+
+    .europrotocolField.europrotocolField_column
+      .europrotocolField__main
+        .europrotocolField__label Водитель ТС "A":
+      .europrotocolField__secondary
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.driver.fullName'
+            name='fullName'
+            placeholder='ФИО'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.driver.birthday'
+            name='birthday'
+            placeholder='Дата рождения'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.driver.address'
+            name='address'
+            placeholder='Адрес'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.driver.phone'
+            name='phone'
+            placeholder='Номер телефона'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.driver.email'
+            name='email'
+            placeholder='E-mail'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.driver.driversLicense'
+            name='driversLicense'
+            placeholder='Водительское удостоверение'
+          )
+
+    .europrotocolField.europrotocolField_column
+      .europrotocolField__main
+        .europrotocolField__label Категория:
+      .europrotocolField__secondary(ng-init='epCtrl.europrotocol.A.category = "A"')
+        label.europrotocolField.europrotocolField_column
+          .europrotocolField__main
+            .europrotocolField__label A
+            .europrotocolField__control
+              +radio-button({
+                name: 'A.category',
+                'ng-model': 'epCtrl.europrotocol.A.category',
+                value: 'A'
+              })
+        label.europrotocolField.europrotocolField_column
+          .europrotocolField__main
+            .europrotocolField__label B
+            .europrotocolField__control
+              +radio-button({
+                name: 'A.category',
+                'ng-model': 'epCtrl.europrotocol.A.category',
+                value: 'B',
+                checked,
+                selected
+              })
+        label.europrotocolField.europrotocolField_column
+          .europrotocolField__main
+            .europrotocolField__label C
+            .europrotocolField__control
+              +radio-button({
+                name: 'A.category',
+                'ng-model': 'epCtrl.europrotocol.A.category',
+                value: 'C'
+              })
+        label.europrotocolField.europrotocolField_column
+          .europrotocolField__main
+            .europrotocolField__label D
+            .europrotocolField__control
+              +radio-button({
+                name: 'A.category',
+                'ng-model': 'epCtrl.europrotocol.A.category',
+                value: 'D'
+              })
+
+    .europrotocolField.europrotocolField_column
+      .form__group.form__group_block.margin_bottom_small
+        input.form__input(
+          ng-model='epCtrl.europrotocol.A.dateOfIssueOfDrivingLicense'
+          name='A.dateOfIssueOfDrivingLicense'
+          placeholder='Дата выдачи ВУ'
+        )
+      .form__group.form__group_block
+        input.form__input(
+          ng-model='epCtrl.europrotocol.A.waybill'
+          name='A.waybill'
+          placeholder='Путевой лист'
+        )
+    .europrotocolField.europrotocolField_column
+      .europrotocolField__main
+        .europrotocolField__label Страховщик ТС "A":
+      .europrotocolField__secondary
+        label.europrotocolField__main.margin_bottom_small
+          .europrotocolField__label ТС застрахован от ущерба:
+          .europrotocolField__control
+            +checkbox({
+              id: 'A.insurer.vehicleIsInsured',
+              'ng-model': 'epCtrl.europrotocol.A.insurer.vehicleIsInsured'
+            })
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.insurer.investigativeCommitteeOfVictim'
+            name='A.insurer.investigativeCommitteeOfVictim'
+            placeholder='СК потерпевшего'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.insurer.insurancePolicy'
+            name='A.insurer.insurancePolicy'
+            placeholder='Страховой полис'
+          )
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='epCtrl.europrotocol.A.insurer.validUntil'
+            name='A.insurer.validUntil'
+            placeholder='Действителен до'
+          )
+
+    .europrotocolField.europrotocolField_column
+      button.button.button_lg.button_block.button_lightgrey.margin_bottom_small Нарисуйте схему удара
+
+      .form__group.form__group_textarea.form__group_block.margin_bottom_small
+        textarea.form__textarea(
+          ng-model='epCtrl.europrotocol.A.insurer.damageDescription'
+          name='A.insurer.damageDescription'
+          placeholder='Характер и перечень повреждений'
+          rows='3'
+        )
+      .form__group.form__group_block
+        input.form__input(
+          ng-model='epCtrl.europrotocol.A.additionalRemarks'
+          name='A.additionalRemarks'
+          placeholder='Дополнеительные замечания'
+        )
+
+    .padding_vertical_half
+      a.button.button_lg.button_block(ui-sref='europrotocol.vehicle_B') Далее

@@ -1,5 +1,5 @@
 .form
-  &__input
+  &__input, &__textarea
     position relative
     width 100%
     padding 0 8px
@@ -9,13 +9,16 @@
     font-size 1rem
     border none
     background none
-    overflow hidden
-    text-overflow ellipsis
-    white-space nowrap
     cursor text
     transition .2s
     &::placeholder
       opacity 1
+  &__input
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+  //&__textarea
+
   &__group
     position relative
     display flex
@@ -31,6 +34,13 @@
       bottom 1px
       left 1px
       background #fff
+    &_textarea
+      height auto
+      white-space normal
+      text-overflow white-space
+      overflow auto
+      &:before
+        height auto
     &_lg
       height 2.5rem
     &_block

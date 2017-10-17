@@ -10,8 +10,14 @@ export default function ($stateProvider, $urlRouterProvider) {
     })
     .state('europrotocol.main-info', {
       url: '/main-info',
-      templateUrl: 'views/app/europrotocol/steps/main-info/main-info.html',
-      controller: 'MainInfoCtrl',
-      controllerAs: 'miCtrl'
+      templateUrl: 'views/app/europrotocol/steps/main-info/main-info.html'
+    })
+    .state('europrotocol.vehicle_A', {
+      url: '/vehicle_A',
+      templateUrl: 'views/app/europrotocol/steps/vehicle_A/vehicle_A.html'
+    })
+    .state('europrotocol.vehicle_B', {
+      url: '/vehicle_B',
+      templateUrl: 'views/app/europrotocol/steps/vehicle_B/vehicle_B.html'
     });
 }
