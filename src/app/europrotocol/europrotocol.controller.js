@@ -100,6 +100,25 @@ export default class {
         schemeOfAccident: '',
         damageDescription: '',
         additionalRemarks: ''
+      },
+      circumstances: {
+        questions: [
+          {
+            id: 1,
+            A: false,
+            B: false
+          }, {
+            id: 2,
+            A: false,
+            B: false
+          }, {
+            id: 3,
+            A: false,
+            B: false
+          }
+        ],
+        otherForDriverA: '',
+        otherForDriverB: ''
       }
     };
 

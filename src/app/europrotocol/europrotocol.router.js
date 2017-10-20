@@ -19,5 +19,11 @@ export default function ($stateProvider, $urlRouterProvider) {
     .state('europrotocol.vehicle_B', {
       url: '/vehicle_B',
       templateUrl: 'views/app/europrotocol/steps/vehicle_B/vehicle_B.html'
+    })
+    .state('europrotocol.circumstances', {
+      url: '/circumstances',
+      templateUrl: 'views/app/europrotocol/steps/circumstances/circumstances.html',
+      controller: 'CircumstancesCtrl',
+      controllerAs: 'CircumstancesCtrl'
     });
 }
