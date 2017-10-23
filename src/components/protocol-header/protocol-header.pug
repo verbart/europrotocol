@@ -1,0 +1,9 @@
+include /src/components/icon/icon
+
+
+h2.protocolHeader
+  .protocolHeader__top
+    .protocolHeader__caption Европротокол
+    a.protocolHeader__goBack(ng-if='$ctrl.goBack' ui-sref='{{$ctrl.goBack}}')
+      +icon({icon: 'chevron_right', className: 'icon_rotate_180', width: '1.6rem', height: '1.6rem'})
+  .protocolHeader__stepTitle {{$ctrl.stepTitle}}

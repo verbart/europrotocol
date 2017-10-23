@@ -1,0 +1,53 @@
+include /src/components/checkbox/checkbox
+
+
+.container
+  protocol-header(
+    go-back='protocol.vehicle_B',
+    step-title='Обстоятельства (4/7)'
+  )
+
+  form
+    .protocolField
+      h4.protocol__sectionHeader Обстоятельства ДТП. Содержит данные о движении транспортных средств в момент ДТП:
+
+    .protocolField.protocolField_column(
+      ng-repeat='question in CircumstancesCtrl.circumstances.questions'
+    )
+      .protocolField__main
+        .protocolField__label {{question.title}}
+      .protocolField__secondary
+        .protocolField__main
+          .protocolField__main.protocolField__main_left
+            label.protocolField__main.protocolField__main_inline
+              .protocolField__label ТС "А"
+              .protocolField__control
+                +checkbox({
+                  'ng-model': 'question.A',
+                  'id': '{{question.id}}A'
+                })
+          .protocolField__main.protocolField__main_right
+            label.protocolField__main.protocolField__main_inline
+              .protocolField__label ТС "В"
+              .protocolField__control
+                +checkbox({
+                  'ng-model': 'question.B',
+                  'id': '{{question.id}}B'
+                })
+
+    .protocolField.protocolField_column
+      .form__group.form__group_block.margin_bottom_small
+        input.form__input(
+          ng-model='CircumstancesCtrl.circumstances.otherForDriverA'
+          name='address'
+          placeholder='Иное (для водителя ТС "А")'
+        )
+      .form__group.form__group_block
+        input.form__input(
+          ng-model='CircumstancesCtrl.circumstances.otherForDriverB'
+          name='date'
+          placeholder='Иное (для водителя ТС "B")'
+        )
+
+    .padding_vertical_half
+      a.button.button_lg.button_block(ui-sref='protocol.accident-scheme') Далее

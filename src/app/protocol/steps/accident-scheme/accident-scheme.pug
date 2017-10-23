@@ -1,0 +1,44 @@
+include /src/components/checkbox/checkbox
+include /src/components/icon/icon
+
+
+ui-view
+  form.step
+    .container
+      protocol-header(
+        go-back='protocol.circumstances',
+        step-title='Схема ДТП (5/7)'
+      )
+
+      .protocolField
+        h3.protocol__sectionHeader Выбрать готовую схему ДТП:
+
+      a.protocolField(ui-sref='protocol.accident-scheme.one-way')
+        .protocolField__label ДТП, произошедшее при движении в одном направлении
+        .protocolField__control
+          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
+      a.protocolField(ui-sref='protocol.accident-scheme.backward')
+        .protocolField__label ДТП, произошедшее в противоположных направлениях
+        .protocolField__control
+          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
+      a.protocolField(ui-sref='protocol.accident-scheme')
+        .protocolField__label ДТП, произошедшее при движении пол углом друг к другу
+        .protocolField__control
+          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
+      a.protocolField(ui-sref='protocol.accident-scheme')
+        .protocolField__label ДТП, произошедшее при движении задним ходом
+        .protocolField__control
+          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
+      a.protocolField(ui-sref='protocol.accident-scheme')
+        .protocolField__label ДТП, произошедшее при наезде на стоящее ТС
+        .protocolField__control
+          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
+
+      .protocolField.protocolField_column
+        .protocolField__main
+          h3.protocol__sectionHeader.margin_top_half.margin И/или нарисовать и сфотографировать схему ДТП самомму:
+        .protocolField__secondary
+          a.button.button_lightgrey.button_block(ui-sref='protocol.accident-scheme') Нарисовать
+
+      .padding_vertical_half
+        a.button.button_lg.button_block(ui-sref='protocol.additional-circumstances') Далее

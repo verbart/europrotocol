@@ -1,0 +1,140 @@
+include /src/components/checkbox/checkbox
+
+
+.container
+  protocol-header(
+    step-title='Сведения о ДТП (1/7)'
+  )
+
+  form
+    .protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Адрес и время аварии:
+      .protocolField__secondary
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.address'
+            name='address'
+            placeholder='Адрес аварии'
+          )
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.date'
+            name='date'
+            placeholder='Время аварии'
+          )
+
+    .protocolField
+      .protocolField__label ТС повреждено:
+      .protocolField__control
+        div(
+          fs-counter
+          value='ProtocolCtrl.europrotocol.vehiclesDamaged'
+          data-min='0'
+          data-max='100'
+          data-step='1'
+          data-addclass='counter'
+        )
+
+    .protocolField
+      .protocolField__label Раненных
+      .protocolField__control
+        div(
+          fs-counter
+          value='ProtocolCtrl.europrotocol.wounded'
+          data-min='0'
+          data-max='100'
+          data-step='1'
+          data-addclass='counter'
+        )
+
+    label.protocolField
+      .protocolField__label Освидетельствование:
+      .protocolField__control
+        +checkbox({
+          id: 'examination',
+          'ng-model': 'ProtocolCtrl.europrotocol.examination'
+        })
+
+    label.protocolField
+      .protocolField__label Материальный ущерб ТС:
+      .protocolField__control
+        +checkbox({
+          id: 'propertyDamageOfVehicle',
+          'ng-model': 'ProtocolCtrl.europrotocol.propertyDamageOfVehicle'
+        })
+
+    label.protocolField
+      .protocolField__label Другому имуществу:
+      .protocolField__control
+        +checkbox({
+          id: 'propertyDamage',
+          'ng-model': 'ProtocolCtrl.europrotocol.propertyDamage'
+        })
+
+    .protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Свидетели:
+        .protocolField__control
+          div(
+            fs-counter
+            value='ProtocolCtrl.witnessesCount'
+            data-min='0'
+            data-max='100'
+            data-step='1'
+            data-addclass='counter'
+          )
+      .protocolField__secondary(
+        ng-show='ProtocolCtrl.europrotocol.witnesses.length'
+        ng-repeat='witness in ProtocolCtrl.europrotocol.witnesses track by $index'
+      )
+        h4 Свидетель {{$index+1}}
+
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].fullName'
+            name='full_name'
+            placeholder='ФИО'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].address'
+            name='address'
+            placeholder='Адрес'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].passport'
+            name='passport'
+            placeholder='Номер и серия паспорта'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].phone'
+            name='phone'
+            placeholder='Контактный телефон'
+          )
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].email'
+            name='email'
+            placeholder='E-mail'
+          )
+
+    label.protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Оформление ДТП:
+        .protocolField__control
+          +checkbox({
+            id: 'executionOfTrafficAccident',
+            'ng-model': 'ProtocolCtrl.europrotocol.executionOfTrafficAccident'
+          })
+      .protocolField__secondary(ng-show='ProtocolCtrl.europrotocol.executionOfTrafficAccident')
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.badgeNumber'
+            placeholder='Номер нагрудного значка'
+          )
+
+    .padding_vertical_half
+      a.button.button_lg.button_block(ui-sref='protocol.vehicle_A') Далее
