@@ -88,7 +88,7 @@ include /src/components/checkbox/checkbox
         ng-show='ProtocolCtrl.europrotocol.witnesses.length'
         ng-repeat='witness in ProtocolCtrl.europrotocol.witnesses track by $index'
       )
-        h4 Свидетель {{$index+1}}
+        h4.protocol__sectionHeader.protocol__sectionHeader_secondary.margin_bottom_small Свидетель {{$index+1}}
 
         .form__group.form__group_block.margin_bottom_small
           input.form__input(

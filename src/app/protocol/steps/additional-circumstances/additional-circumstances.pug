@@ -8,10 +8,132 @@ include /src/components/checkbox/checkbox
   )
 
   form
+    .protocolField.margin_bottom_half
+      h3.protocol__sectionHeader Обстоятельства ДТП. Необходимо указать дополнительные обстоятельства ДТП:
+
+    .form__group.form__group_textarea.form__group_block.margin_bottom_half
+      textarea.form__textarea(
+        ng-model='ProtocolCtrl.europrotocol.B.insurer.damageDescription'
+        name='A.insurer.damageDescription'
+        placeholder='Обстоятельства ДТП'
+        rows='3'
+      )
+
+    h4.protocol__sectionHeader.protocol__sectionHeader_secondary ТС находилось под управлением:
+
+    .protocolField.protocolField_column
+      label.protocolField__main.margin_bottom_small
+        .protocolField__label Собственника ТС:
+        .protocolField__control
+          +checkbox({
+            id: 'A.insurer.vehicleIsInsured',
+            'ng-model': 'ProtocolCtrl.europrotocol.B.insurer.vehicleIsInsured'
+          })
+      label.protocolField__main
+        .protocolField__label Иного лица:
+        .protocolField__control
+          +checkbox({
+            id: 'A.insurer.vehicleIsInsured',
+            'ng-model': 'ProtocolCtrl.europrotocol.B.insurer.other'
+          })
+
+    .protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Другие участники аварии:
+        .protocolField__control
+          div(
+            fs-counter
+            value='ProtocolCtrl.witnessesCount'
+            data-min='0'
+            data-max='100'
+            data-step='1'
+            data-addclass='counter'
+          )
+      .protocolField__secondary(
+        ng-show='ProtocolCtrl.europrotocol.witnesses.length'
+        ng-repeat='witness in ProtocolCtrl.europrotocol.witnesses track by $index'
+      )
+        h4.protocol__sectionHeader.protocol__sectionHeader_secondary.margin_bottom_small Участник {{$index+1}}
+
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].carBrand'
+            name='car_brand'
+            placeholder='Марка машины'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].carNumber'
+            name='car_number'
+            placeholder='Номер машины'
+          )
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.B.insurer.investigativeCommitteeOfVictim'
+            name='A.insurer.investigativeCommitteeOfVictim'
+            placeholder='СК потерпевшего'
+          )
+        .form__group.form__group_block.margin_bottom_small
+            input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].insurancePolicy'
+            name='insurancePolicy'
+            placeholder='Страховой полис'
+          )
+
+    label.protocolField
+      .protocolField__label ТС передвигается своим ходом?
+      .protocolField__control
+        +checkbox({
+          'ng-model': 'question.A'
+        })
+
+    .protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Повреждения иного имущества (не ТС):
+        .protocolField__control
+          div(
+            fs-counter
+            value='ProtocolCtrl.witnessesCount'
+            data-min='0'
+            data-max='100'
+            data-step='1'
+            data-addclass='counter'
+          )
+      .protocolField__secondary(
+        ng-show='ProtocolCtrl.europrotocol.witnesses.length'
+        ng-repeat='witness in ProtocolCtrl.europrotocol.witnesses track by $index'
+      )
+        h4.protocol__sectionHeader.protocol__sectionHeader_secondary.margin_bottom_small Имущество {{$index+1}}
+
+        .form__group.form__group_block.margin_bottom_small
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].fullName'
+            name='full_name'
+            placeholder='ФИО'
+          )
+        .form__group.form__group_block
+          input.form__input(
+            ng-model='ProtocolCtrl.europrotocol.witnesses[$index].address'
+            name='address'
+            placeholder='Адрес'
+          )
+
     .protocolField
-      h4.protocol__sectionHeader Обстоятельства ДТП. Необходимо указать дополнительные обстоятельства ДТП:
+      .form__group.form__group_textarea.form__group_block
+        textarea.form__textarea(
+          ng-model='ProtocolCtrl.europrotocol.B.insurer.damageDescription'
+          name='A.insurer.damageDescription'
+          placeholder='Дополнительные замечания'
+          rows='3'
+        )
 
-
+    .protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Подписанием настоящего заявления, я выражаю своё добровольное согласие на обработку
+          | моих персональных данных, содержащихся в настоящем заявлении.
+      .protocolField__secondary
+        button.button.button_block.button_lightgrey.margin_bottom_small Подпись водителя ТС "А"
+        button.button.button_block.button_lightgrey Подпись водителя ТС "B"
 
     .padding_vertical_half
-      a.button.button_lg.button_block(ui-sref='protocol') Далее
+      a.button.button_lg.button_block(ui-sref='protocol.photos') Далее

@@ -31,5 +31,11 @@ export default function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/app/protocol/steps/additional-circumstances/additional-circumstances.html',
       controller: 'AdditionalCircumstancesCtrl',
       controllerAs: 'AdditionalCircumstancesCtrl'
+    })
+    .state('protocol.photos', {
+      url: '/photos',
+      templateUrl: 'views/app/protocol/steps/photos/photos.html',
+      controller: 'PhotosCtrl',
+      controllerAs: 'PhotosCtrl'
     });
 }

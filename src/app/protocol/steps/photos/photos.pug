@@ -1,0 +1,36 @@
+include /src/components/checkbox/checkbox
+
+
+.container
+  protocol-header(
+    step-title='Фотографии ДТП (7/7)',
+    go-back='protocol.additional-circumstances'
+  )
+
+form
+  .protocolField
+    h3.protocol__sectionHeader Добавьте не менее пяти снимков с места ДТП:
+
+  .protocolField.padding_bottom_none
+    .row
+      .col-sm-6.paddingg_bottom_half
+        a(ui-sref='protocol.one-way')
+          img(src='/images/schema-of-accident.jpeg')
+      .col-sm-6.padding_bottom_half
+        a(ui-sref='protocol.one-way')
+          img(src='/images/schema-of-accident.jpeg')
+      .col-sm-6.padding_bottom_half
+        a(ui-sref='protocol.one-way')
+          img(src='/images/schema-of-accident.jpeg')
+      .col-sm-6.padding_bottom_half
+        a(ui-sref='protocol.one-way')
+          img(src='/images/schema-of-accident.jpeg')
+      .col-sm-6.padding_bottom_half
+        a(ui-sref='protocol.one-way')
+          img(src='/images/schema-of-accident.jpeg')
+
+  .padding_vertical_half
+    button.button.button_lg.button_block.button_lightgrey Сделать фото
+
+  .padding_bottom_half
+    a.button.button_lg.button_block(ui-sref='protocol') Далее
