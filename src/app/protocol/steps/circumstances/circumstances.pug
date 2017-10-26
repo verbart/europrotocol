@@ -24,7 +24,7 @@ include /src/components/checkbox/checkbox
               .protocolField__control
                 +checkbox({
                   'ng-model': 'question.A',
-                  'id': '{{question.id}}A'
+                  'id': '{{$index}}_A'
                 })
           .protocolField__main.protocolField__main_right
             label.protocolField__main.protocolField__main_inline
@@ -32,7 +32,7 @@ include /src/components/checkbox/checkbox
               .protocolField__control
                 +checkbox({
                   'ng-model': 'question.B',
-                  'id': '{{question.id}}B'
+                  'id': '{{$index}}_B'
                 })
 
     .protocolField.protocolField_column
