@@ -12,8 +12,6 @@ export default class {
     this.warningMessageOfGPSisShowed = false;
     this.value = 0;
 
-    console.log('It Works!');
-
     this.europrotocol = {
       address: '',
       date: '',
@@ -123,12 +121,11 @@ export default class {
     };
 
     this.witnessesCount = this.europrotocol.witnesses.length;
-    console.log(this.witnessesCount);
 
     window.onbeforeunload = function (evt) {
       const message = 'Документ не сохранён. После закрытия страницы, все данные будут утеряны.';
 
-      if (typeof evt == "undefined") {
+      if (typeof evt === 'undefined') {
         evt = window.event;
       }
       if (evt) {
@@ -136,11 +133,9 @@ export default class {
       }
 
       return message;
-    }
+    };
 
     this.$scope.$watch(() => this.witnessesCount, (newValue, oldValue) => {
-      console.log(this.europrotocol.witnesses);
-
       if (newValue > oldValue) {
         this.europrotocol.witnesses.push({});
       } else if (newValue < oldValue) {

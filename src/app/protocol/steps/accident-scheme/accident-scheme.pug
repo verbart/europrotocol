@@ -13,24 +13,11 @@ ui-view
       .protocolField
         h3.protocol__sectionHeader Выбрать готовую схему ДТП:
 
-      a.protocolField(ui-sref='protocol.accident-scheme.one-way')
-        .protocolField__label ДТП, произошедшее при движении в одном направлении
-        .protocolField__control
-          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
-      a.protocolField(ui-sref='protocol.accident-scheme.backward')
-        .protocolField__label ДТП, произошедшее в противоположных направлениях
-        .protocolField__control
-          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
-      a.protocolField(ui-sref='protocol.accident-scheme')
-        .protocolField__label ДТП, произошедшее при движении пол углом друг к другу
-        .protocolField__control
-          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
-      a.protocolField(ui-sref='protocol.accident-scheme')
-        .protocolField__label ДТП, произошедшее при движении задним ходом
-        .protocolField__control
-          +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
-      a.protocolField(ui-sref='protocol.accident-scheme')
-        .protocolField__label ДТП, произошедшее при наезде на стоящее ТС
+      a.protocolField(
+        ng-repeat='direction in AccidentSchemeCtrl.directions'
+        ui-sref='protocol.accident-scheme.direction({ direction: direction.path })'
+      )
+        .protocolField__label {{direction.title}}
         .protocolField__control
           +icon({icon: 'chevron_right', className: 'europrotocol__icon', width: '1.5rem', height: '1.5rem'})
 

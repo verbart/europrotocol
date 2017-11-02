@@ -1,0 +1,21 @@
+include /src/components/checkbox/checkbox
+include /src/components/icon/icon
+
+
+ui-view
+  .container
+    protocol-header(
+      go-back='protocol.accident-scheme',
+      step-title='Схема ДТП'
+    )
+
+    form
+      .protocolField
+        h3.protocol__sectionHeader {{DirectionCtrl.direction.title}}
+
+      .row.padding_vertical_half
+        .col-sm-6.padding_bottom_half(
+          ng-repeat='scheme in DirectionCtrl.schemes | filter: {direction: DirectionCtrl.directionPath}'
+        )
+          a.protocol__schemeImage(ui-sref='protocol.accident-scheme.direction.scheme({scheme: scheme.number})')
+            img(src='/images/accident-scheme/{{scheme.number}}.jpeg')

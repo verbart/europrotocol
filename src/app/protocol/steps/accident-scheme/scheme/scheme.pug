@@ -1,0 +1,17 @@
+include /src/components/checkbox/checkbox
+include /src/components/icon/icon
+
+
+.container
+  protocol-header(
+    go-back='protocol.accident-scheme.direction({direction: "{{SchemeCtrl.directionPath}}"})',
+    step-title='Схема {{SchemeCtrl.scheme.number}}'
+  )
+
+  h3.protocol__sectionHeader {{SchemeCtrl.scheme.title}}
+
+  .padding_vertical_half.text_center
+    img(src='/images/accident-scheme/{{SchemeCtrl.scheme.number}}.jpeg')
+
+  .padding_vertical_half
+    a.button.button_lg.button_block(ui-sref='protocol.additional-circumstances') Далее

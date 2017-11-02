@@ -6,16 +6,16 @@ export default function ($stateProvider) {
       controller: 'AccidentSchemeCtrl',
       controllerAs: 'AccidentSchemeCtrl'
     })
-    .state('protocol.accident-scheme.one-way', {
-      url: '/one-way',
-      templateUrl: 'views/app/protocol/steps/accident-scheme/one-way/one-way.html'
-    })
-      .state('protocol.accident-scheme.one-way.scheme', {
-        url: '/scheme',
-        templateUrl: 'views/app/protocol/steps/accident-scheme/one-way/scheme/scheme.html'
+      .state('protocol.accident-scheme.direction', {
+        url: '/:direction',
+        templateUrl: 'views/app/protocol/steps/accident-scheme/direction/direction.html',
+        controller: 'DirectionCtrl',
+        controllerAs: 'DirectionCtrl'
       })
-    .state('protocol.accident-scheme.backward', {
-      url: '/backward',
-      templateUrl: 'views/app/protocol/steps/accident-scheme/backward/backward.html'
-    });
-}
+        .state('protocol.accident-scheme.direction.scheme', {
+          url: '/:scheme',
+          templateUrl: 'views/app/protocol/steps/accident-scheme/scheme/scheme.html',
+          controller: 'SchemeCtrl',
+          controllerAs: 'SchemeCtrl'
+        });
+};

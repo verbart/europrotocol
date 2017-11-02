@@ -6,8 +6,11 @@ import 'ng-file-upload';
 
 import router from './accident-scheme.router';
 
+import AccidentScheme from './accident-scheme.factory';
+
 import AccidentSchemeCtrl from './accident-scheme.controller';
-import OneWayCtrl from './one-way/one-way.controller';
+import DirectionCtrl from './direction/direction.controller';
+import SchemeCtrl from './scheme/scheme.controller';
 
 
 angular.module('europrotocol.protocol.accident-scheme', [
@@ -17,5 +20,8 @@ angular.module('europrotocol.protocol.accident-scheme', [
 ])
   .config(router)
 
+  .factory('AccidentScheme', AccidentScheme)
+
   .controller('AccidentSchemeCtrl', AccidentSchemeCtrl)
-  .controller('OneWayCtrl', OneWayCtrl);
+  .controller('DirectionCtrl', DirectionCtrl)
+.controller('SchemeCtrl', SchemeCtrl);
