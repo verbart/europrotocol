@@ -12,6 +12,7 @@ import CircumstancesCtrl from './steps/circumstances/circumstances.controller';
 import AccidentSchemeCtrl from './steps/accident-scheme/accident-scheme.controller';
 import AdditionalCircumstancesCtrl from './steps/additional-circumstances/additional-circumstances.controller';
 import PhotosCtrl from './steps/photos/photos.controller';
+import FinishingCtrl from './steps/finishing/finishing.controller';
 
 import CounterComponent from '../../components/counter/counter.component';
 import ProtocolHeaderComponent from '../../components/protocol-header/protocol-header.component';
@@ -31,6 +32,7 @@ angular.module('europrotocol.protocol', [
   .controller('AccidentSchemeCtrl', AccidentSchemeCtrl)
   .controller('AdditionalCircumstancesCtrl', AdditionalCircumstancesCtrl)
   .controller('PhotosCtrl', PhotosCtrl)
+  .controller('FinishingCtrl', FinishingCtrl)
 
   .component('counter', CounterComponent)
   .component('protocolHeader', ProtocolHeaderComponent);

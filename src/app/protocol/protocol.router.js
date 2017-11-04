@@ -37,5 +37,11 @@ export default function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/app/protocol/steps/photos/photos.html',
       controller: 'PhotosCtrl',
       controllerAs: 'PhotosCtrl'
+    })
+    .state('protocol.finishing', {
+      url: '/finishing',
+      templateUrl: 'views/app/protocol/steps/finishing/finishing.html',
+      controller: 'FinishingCtrl',
+      controllerAs: 'FinishingCtrl'
     });
 }
