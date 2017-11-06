@@ -1,3 +1,4 @@
+include /src/components/icon/icon
 include /src/components/checkbox/checkbox
 include /src/components/radio-button/radio-button
 
@@ -9,6 +10,20 @@ include /src/components/radio-button/radio-button
   )
 
   form
+    .protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Водительское удостоверение:
+        .protocolField__control
+          button.button.button_lightgrey
+            +icon({icon: 'pin', className: 'button__icon'})
+
+    .protocolField.protocolField_column
+      .protocolField__main
+        .protocolField__label Свидетельство о регистрации ТС:
+        .protocolField__control
+          button.button.button_lightgrey
+            +icon({icon: 'pin', className: 'button__icon'})
+
     .protocolField.protocolField_column
       .protocolField__main
         .protocolField__label Данные о ТС "B":
