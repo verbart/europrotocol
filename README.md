@@ -1,4 +1,4 @@
-# Avarcom
+# Europrotocol
 
 **Based on** https://github.com/verbart/ng-boilerplate
 
